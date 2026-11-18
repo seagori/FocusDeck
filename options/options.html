@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>X Focus &amp; Anki — Settings</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <h1 data-i18n="optionsHeader">⚡ X Focus &amp; Anki — 설정 및 로컬 카드 덱 관리</h1>
+      <span class="badge" data-i18n="localBadge">100% 로컬 저장소 (browser.storage.local)</span>
+    </div>
+  </header>
+
+  <main class="page">
+    <!-- 일반 설정 -->
+    <section class="panel">
+      <h2 data-i18n="optGeneralTitle">일반 및 피드 · 학습 설정</h2>
+      <p id="statsBanner" class="muted"></p>
+      <div class="grid-2">
+        <label class="check-item">
+          <input type="checkbox" id="removeDiscoverTab" />
+          <span data-i18n="optRemoveDiscoverLong">홈에서 추천(For You) 탭 제거 및 팔로우 중 자동 전환</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" id="hideExploreNav" />
+          <span data-i18n="optHideExplore">탐색하기(Explore) 메뉴 숨기기</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" id="hideDiscoverSections" />
+          <span data-i18n="optHideSectionsLong">사이드바 트렌드 / 팔로우 추천 / 더 찾아보기 숨기기</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" id="ankiEnabled" />
+          <span data-i18n="optAnkiEnabledLong">피드 중간에 Anki 학습 카드 삽입 활성화</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" id="hideFurigana" />
+          <span data-i18n="optHideFuriganaLong">한자 읽기(후리가나) 앞면에서 가리기</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" id="usageReminderEnabled" />
+          <span data-i18n="optUsageReminderLong">X 사용 시간 리마인드 카드 피드 삽입</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" id="ytHideRecommendations" />
+          <span data-i18n="optYtHideRecs">동영상 옆 알고리즘 추천 숨기기 (YouTube)</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" id="ytHideShorts" />
+          <span data-i18n="optYtHideShorts">YouTube 쇼츠(Shorts) 숨기기</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" id="igHideHomeSuggested" />
+          <span data-i18n="optIgHideHomeSuggested">홈 화면 추천 게시물 숨기기</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" id="igHideExplore" />
+          <span data-i18n="optIgHideExplore">탐색(Explore) 탭/메뉴 숨기기</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" id="igHideReels" />
+          <span data-i18n="optIgHideReels">Instagram 릴스(Reels) 숨기기</span>
+        </label>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="language" data-i18n="langLabel">언어 / Language</label>
+          <select id="language">
+            <option value="auto" data-i18n="langAuto">자동 (브라우저)</option>
+            <option value="ko" data-i18n="langKo">한국어</option>
+            <option value="en" data-i18n="langEn">English</option>
+            <option value="ja" data-i18n="langJa">日本語</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="ankiInterval" data-i18n="optIntervalLong">카드 삽입 간격 (트윗 수)</label>
+          <input type="number" id="ankiInterval" min="1" max="50" />
+        </div>
+        <div class="field">
+          <label for="ankiMode" data-i18n="optModeLong">카드 선택 방식</label>
+          <select id="ankiMode">
+            <option value="due-or-all" data-i18n="modeDueOrAll">복습 예정 우선 (없으면 전체 랜덤)</option>
+            <option value="due-only" data-i18n="modeDueOnly">복습 예정 카드만 표시</option>
+            <option value="random" data-i18n="modeRandom">항상 무작위 표시</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="learningStyle" data-i18n="optLearningStyle">학습 방식</label>
+          <select id="learningStyle">
+            <option value="anki" data-i18n="styleAnki">Anki (정답 가리기·복습)</option>
+            <option value="exposure" data-i18n="styleExposure">단순 반복 노출 (전체 표시)</option>
+            <option value="mixed" data-i18n="styleMixed">혼합 (Anki + 반복 노출)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="ankiDirection" data-i18n="optDirectionLong">출제 방향 (양방향 복습)</label>
+          <select id="ankiDirection">
+            <option value="front-to-back" data-i18n="dirF2B">정방향 (앞면 → 뒷면)</option>
+            <option value="back-to-front" data-i18n="dirB2F">역방향 (뒷면 → 앞면)</option>
+            <option value="both" data-i18n="dirBoth">양방향 랜덤</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="ankiActiveDeck" data-i18n="optActiveDeck">활성 덱</label>
+          <select id="ankiActiveDeck">
+            <option value="ALL">ALL</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="dailyGoal" data-i18n="optDailyGoalLong">오늘의 학습 목표 (개)</label>
+          <input type="number" id="dailyGoal" min="1" max="500" />
+        </div>
+        <div class="field">
+          <label for="usageReminderIntervalMin" data-i18n="optUsageIntervalLong">사용 시간 알림 간격 (분)</label>
+          <input type="number" id="usageReminderIntervalMin" min="1" max="240" />
+        </div>
+        <div class="field">
+          <label for="usageCheckIntervalSec" data-i18n="optUsageCheckIntervalSec">사용 시간 체크 주기 (초)</label>
+          <input type="number" id="usageCheckIntervalSec" min="1" max="120" />
+        </div>
+        <div class="field">
+          <label for="overlayCardIntervalSec" data-i18n="optOverlayIntervalSec">오버레이 학습 카드 주기 (초)</label>
+          <input type="number" id="overlayCardIntervalSec" min="5" max="3600" />
+        </div>
+        <div class="field">
+          <label for="ytShortsCardInterval" data-i18n="optYtShortsInterval">쇼츠 학습 카드 주기 (쇼츠 N개마다)</label>
+          <input type="number" id="ytShortsCardInterval" min="1" max="50" />
+        </div>
+        <div class="field">
+          <label for="igReelsCardInterval" data-i18n="optIgReelsInterval">릴스 학습 카드 주기 (릴스 N개마다)</label>
+          <input type="number" id="igReelsCardInterval" min="1" max="50" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="mutedKeywords" data-i18n="optMutedKeywordsLong">로컬 키워드 뮤트 (쉼표 또는 줄바꿈으로 구분)</label>
+        <textarea id="mutedKeywords" rows="2" data-i18n-placeholder="mutedKeywordsPh" placeholder="spoiler, promo"></textarea>
+      </div>
+
+      <div class="field" id="deckWeightsSection">
+        <label data-i18n="optDeckWeightsLong">덱별 가중치 / 빈도 설정 (전체 덱 선택 시 적용, 0이면 제외)</label>
+        <div id="deckWeightsList" class="form-row"></div>
+      </div>
+      <p id="settingsMsg" class="status-msg"></p>
+    </section>
+
+    <!-- 새 카드 추가 / 수정 -->
+    <section class="panel">
+      <h2 id="formTitle" data-i18n="formAddTitle">새 Anki 카드 추가</h2>
+      <input type="hidden" id="editCardId" value="" />
+      <div class="form-row">
+        <div class="field">
+          <label for="cardDeck" data-i18n="lblDeck">덱 (Deck)</label>
+          <input type="text" id="cardDeck" placeholder="English, N4" value="Default" />
+        </div>
+        <div class="field">
+          <label for="cardHint" data-i18n="lblHint">힌트 (선택)</label>
+          <input type="text" id="cardHint" placeholder="" />
+        </div>
+        <div class="field">
+          <label for="cardTags" data-i18n="lblTags">태그 (쉼표 구분, 선택)</label>
+          <input type="text" id="cardTags" placeholder="vocab, core" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label for="cardImage" data-i18n="lblImage">이미지 URL 또는 파일 (선택)</label>
+          <input type="text" id="cardImage" placeholder="https://... or upload below" />
+        </div>
+        <div class="field">
+          <label for="cardImageFile">&nbsp;</label>
+          <div class="btn-row">
+            <input type="file" id="cardImageFile" accept="image/*" />
+            <button type="button" id="clearImageBtn" class="btn btn-secondary btn-sm" data-i18n="imageClearBtn" hidden>이미지 제거</button>
+          </div>
+        </div>
+      </div>
+      <img id="cardImagePreview" hidden style="max-width: 240px; max-height: 160px; border-radius: 8px; margin-bottom: 10px; border: 1px solid var(--border);" alt="preview" />
+      <div class="grid-2">
+        <div class="field">
+          <label for="cardFront" data-i18n="lblFront">앞면 (질문 / 단어)</label>
+          <textarea id="cardFront" rows="3"></textarea>
+        </div>
+        <div class="field">
+          <label for="cardBack" data-i18n="lblBack">뒷면 (정답 / 해설)</label>
+          <textarea id="cardBack" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button id="saveCardBtn" class="btn btn-primary" data-i18n="saveCardBtn">카드 저장</button>
+        <button id="cancelEditBtn" class="btn btn-secondary" data-i18n="cancelEditBtn" hidden>수정 취소</button>
+        <span id="cardFormMsg" class="status-msg"></span>
+      </div>
+    </section>
+
+    <!-- 일괄 가져오기 / 내보내기 -->
+    <section class="panel">
+      <h2 data-i18n="importTitle">일괄 가져오기 / 내보내기 (Anki TSV · JSON)</h2>
+      <p class="muted" data-i18n="importDesc">
+        Anki에서 내보낸 탭 구분 텍스트(앞면\t뒷면), 앞면 :: 뒷면, 또는 JSON 배열을 붙여넣거나 파일로 불러오세요.
+      </p>
+      <div class="form-row">
+        <div class="field">
+          <label for="importDeck" data-i18n="lblImportDeck">가져올 기본 덱 이름</label>
+          <input type="text" id="importDeck" value="Imported" />
+        </div>
+        <div class="field">
+          <label for="importFile" data-i18n="lblImportFile">파일에서 불러오기 (.txt, .tsv, .csv, .json)</label>
+          <input type="file" id="importFile" accept=".txt,.tsv,.csv,.json" />
+        </div>
+      </div>
+      <textarea id="importText" rows="4" placeholder="Ephemeral&#9;일시적인&#10;Idempotent :: ..."></textarea>
+      <label class="check-item" style="margin-bottom: 10px;">
+        <input type="checkbox" id="skipDuplicates" checked />
+        <span data-i18n="skipDuplicatesLabel">중복 카드 건너뛰기 (같은 덱 + 앞면)</span>
+      </label>
+      <div class="btn-row">
+        <button id="importBtn" class="btn btn-primary" data-i18n="importBtn">가져오기 실행</button>
+        <button id="exportJsonBtn" class="btn btn-secondary" data-i18n="exportJsonBtn">전체 카드 JSON 내보내기</button>
+        <button id="exportTsvBtn" class="btn btn-secondary" data-i18n="exportTsvBtn">전체 카드 TSV 내보내기</button>
+        <button id="backupBtn" class="btn btn-secondary" data-i18n="backupBtn">전체 백업 (.json)</button>
+        <button id="restoreBtn" class="btn btn-secondary" data-i18n="restoreBtn">전체 복원 (.json)</button>
+        <input type="file" id="restoreFile" accept=".json" hidden />
+        <button id="resetProgressBtn" class="btn btn-danger" data-i18n="resetProgressBtn">복습 일정 초기화</button>
+      </div>
+      <p id="importMsg" class="status-msg"></p>
+    </section>
+
+    <!-- 덱(그룹)별 관리 -->
+    <section class="panel">
+      <h2 data-i18n="deckManagerTitle">덱(그룹)별 관리</h2>
+      <div id="deckManagerList" class="cards-list"></div>
+    </section>
+
+    <!-- 카드 목록 -->
+    <section class="panel">
+      <div class="list-header">
+        <h2><span data-i18n="cardsListTitle">저장된 카드 목록</span> (<span id="totalCardsCount">0</span>)</h2>
+        <div class="filter-bar">
+          <select id="filterDeck">
+            <option value="ALL">ALL</option>
+          </select>
+          <input type="search" id="searchQuery" data-i18n-placeholder="searchPh" placeholder="Search..." />
+          <button id="deleteDeckBtn" type="button" class="btn btn-danger btn-sm" data-i18n="deleteDeckBtn" hidden>선택 덱 삭제</button>
+        </div>
+      </div>
+      <div id="paginationBar" class="btn-row" style="margin-bottom: 10px;"></div>
+      <div id="cardsList" class="cards-list"></div>
+    </section>
+  </main>
+
+  <script src="../shared/i18n.js"></script>
+  <script src="../shared/storage.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

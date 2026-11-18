@@ -1,0 +1,288 @@
+/* X Focus & Anki — Content Script Styles (Desktop & Mobile Firefox) */
+
+[data-xfocus-hidden] {
+  display: none !important;
+}
+
+/* =========================================================
+   In-Feed Anki Card
+   ========================================================= */
+.xfocus-anki-card {
+  --xf-bg: #ffffff;
+  --xf-bg-soft: #f7f9f9;
+  --xf-border: #eff3f4;
+  --xf-text: #0f1419;
+  --xf-muted: #536471;
+  --xf-accent: #1d9bf0;
+  --xf-accent-soft: rgba(29, 155, 240, 0.12);
+
+  box-sizing: border-box;
+  margin: 0;
+  padding: 14px 16px;
+  border-top: 1px solid var(--xf-border);
+  border-bottom: 1px solid var(--xf-border);
+  background: var(--xf-bg);
+  color: var(--xf-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.45;
+  position: relative;
+}
+
+.xfocus-anki-card[data-xfocus-theme="dim"] {
+  --xf-bg: #15202b;
+  --xf-bg-soft: #1e2732;
+  --xf-border: #38444d;
+  --xf-text: #f7f9f9;
+  --xf-muted: #8b98a5;
+}
+
+.xfocus-anki-card[data-xfocus-theme="dark"] {
+  --xf-bg: #000000;
+  --xf-bg-soft: #16181c;
+  --xf-border: #2f3336;
+  --xf-text: #e7e9ea;
+  --xf-muted: #71767b;
+}
+
+.xfocus-anki-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.xfocus-anki-badge-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.xfocus-anki-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 700;
+  background: var(--xf-accent-soft);
+  color: var(--xf-accent);
+}
+
+.xfocus-anki-deck {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--xf-muted);
+}
+
+.xfocus-anki-skip {
+  background: transparent;
+  border: none;
+  color: var(--xf-muted);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 9999px;
+}
+
+.xfocus-anki-skip:hover {
+  background: var(--xf-bg-soft);
+  color: var(--xf-text);
+}
+
+.xfocus-anki-front {
+  font-size: 16px;
+  font-weight: 600;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin-bottom: 10px;
+}
+
+.xfocus-anki-hint {
+  font-size: 13px;
+  color: var(--xf-muted);
+  background: var(--xf-bg-soft);
+  padding: 8px 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  white-space: pre-wrap;
+}
+
+.xfocus-anki-back {
+  font-size: 15px;
+  background: var(--xf-bg-soft);
+  border-left: 3px solid var(--xf-accent);
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.xfocus-anki-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.xfocus-btn {
+  appearance: none;
+  border: 1px solid var(--xf-border);
+  background: var(--xf-bg-soft);
+  color: var(--xf-text);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 14px;
+  min-height: 36px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+}
+
+.xfocus-btn:active {
+  transform: scale(0.97);
+}
+
+.xfocus-btn-primary {
+  background: var(--xf-accent);
+  border-color: var(--xf-accent);
+  color: #ffffff;
+}
+
+.xfocus-btn-again {
+  border-color: rgba(244, 33, 46, 0.45);
+  color: #f4212e;
+}
+
+.xfocus-btn-hard {
+  border-color: rgba(255, 122, 0, 0.45);
+  color: #ff7a00;
+}
+
+.xfocus-btn-good {
+  border-color: rgba(0, 186, 124, 0.45);
+  color: #00ba7c;
+}
+
+.xfocus-btn-easy {
+  border-color: rgba(29, 155, 240, 0.45);
+  color: #1d9bf0;
+}
+
+.xfocus-anki-done {
+  font-size: 13px;
+  color: #00ba7c;
+  font-weight: 600;
+  padding: 6px 0;
+}
+
+.xfocus-anki-streak {
+  font-size: 11px;
+  font-weight: 700;
+  color: #ff7a00;
+  background: rgba(255, 122, 0, 0.12);
+  padding: 2px 8px;
+  border-radius: 9999px;
+}
+
+/* =========================================================
+   In-Feed Usage Time Reminder Card (Bold Typography)
+   ========================================================= */
+.xfocus-usage-card {
+  border-left: 4px solid #f59e0b;
+}
+
+.xfocus-usage-badge {
+  background: rgba(245, 158, 11, 0.16);
+  color: #d97706;
+}
+
+.xfocus-usage-title {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: var(--xf-text);
+}
+
+.xfocus-usage-detail {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--xf-muted);
+  margin-bottom: 12px;
+}
+
+.xfocus-card-image {
+  display: block;
+  max-width: 100%;
+  max-height: 260px;
+  border-radius: 10px;
+  object-fit: contain;
+  margin: 8px 0 10px 0;
+  border: 1px solid var(--xf-border);
+}
+
+.xfocus-exposure-badge {
+  background: rgba(16, 185, 129, 0.14);
+  color: #10b981;
+}
+
+/* =========================================================
+   YouTube Watch Panel & Shorts Floating Overlay
+   ========================================================= */
+.xfocus-yt-panel {
+  border: 1px solid var(--xf-border);
+  border-radius: 14px;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+
+.xfocus-yt-floating {
+  position: fixed;
+  right: 20px;
+  bottom: 24px;
+  z-index: 999999;
+  width: min(380px, calc(100vw - 24px));
+  border: 1px solid var(--xf-border);
+  border-radius: 16px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.42);
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .xfocus-yt-floating {
+    left: 12px;
+    right: 12px;
+    bottom: 64px;
+    width: auto;
+  }
+}
+
+.xfocus-yt-floating .xfocus-anki-skip {
+  min-width: 64px;
+  min-height: 40px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  background: var(--xf-bg-soft);
+  border: 1px solid var(--xf-border);
+  color: var(--xf-text);
+}
+
+.xfocus-ig-square {
+  width: min(300px, calc(100vw - 24px));
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.xfocus-ig-square > .xfocus-anki-card {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+}

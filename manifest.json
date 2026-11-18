@@ -1,0 +1,101 @@
+{
+  "manifest_version": 3,
+  "name": "X Focus & Anki",
+  "version": "1.0.4",
+  "description": "Remove Discover/Algorithmic feeds & Shorts/Reels on X, YouTube & Instagram, inject local Anki or Exposure flashcards, and track usage reminders. 100% local.",
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png",
+    "128": "icons/icon-128.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "x-focus-anki@local.extension",
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    },
+    "gecko_android": {
+      "strict_min_version": "142.0"
+    }
+  },
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "*://x.com/*",
+    "*://*.x.com/*",
+    "*://twitter.com/*",
+    "*://*.twitter.com/*",
+    "*://www.youtube.com/*",
+    "*://m.youtube.com/*",
+    "*://youtube.com/*",
+    "*://www.instagram.com/*",
+    "*://m.instagram.com/*",
+    "*://instagram.com/*"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "X Focus & Anki",
+    "default_icon": {
+      "48": "icons/icon-48.png",
+      "96": "icons/icon-96.png"
+    }
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://x.com/*",
+        "*://*.x.com/*",
+        "*://twitter.com/*",
+        "*://*.twitter.com/*"
+      ],
+      "js": [
+        "shared/i18n.js",
+        "shared/storage.js",
+        "content/content.js"
+      ],
+      "css": [
+        "content/content.css"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "*://www.youtube.com/*",
+        "*://m.youtube.com/*",
+        "*://youtube.com/*"
+      ],
+      "js": [
+        "shared/i18n.js",
+        "shared/storage.js",
+        "content/youtube.js"
+      ],
+      "css": [
+        "content/content.css"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "*://www.instagram.com/*",
+        "*://m.instagram.com/*",
+        "*://instagram.com/*"
+      ],
+      "js": [
+        "shared/i18n.js",
+        "shared/storage.js",
+        "content/instagram.js"
+      ],
+      "css": [
+        "content/content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>X Focus &amp; Anki</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="title-wrap">
+      <span class="logo">⚡</span>
+      <div>
+        <h1 data-i18n="appTitle">X Focus &amp; Anki</h1>
+        <p class="subtitle" data-i18n="appSubtitle">100% 로컬 · Firefox 데스크탑/모바일</p>
+      </div>
+    </div>
+    <button id="openOptionsBtn" class="icon-btn" title="Settings">⚙️</button>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="input-row">
+        <label for="language" data-i18n="langLabel">언어 / Language</label>
+        <select id="language">
+          <option value="auto" data-i18n="langAuto">자동 (브라우저)</option>
+          <option value="ko" data-i18n="langKo">한국어</option>
+          <option value="en" data-i18n="langEn">English</option>
+          <option value="ja" data-i18n="langJa">日本語</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- 1. Discover 제거 -->
+    <section class="card">
+      <h2 data-i18n="sec1Title">1. Discover / 추천 제거</h2>
+      <label class="toggle-row">
+        <span data-i18n="optRemoveDiscover">추천(For You) 탭 제거 및 팔로우 중 전환</span>
+        <input type="checkbox" id="removeDiscoverTab" />
+      </label>
+      <label class="toggle-row">
+        <span data-i18n="optHideExplore">탐색하기(Explore) 메뉴 숨기기</span>
+        <input type="checkbox" id="hideExploreNav" />
+      </label>
+      <label class="toggle-row">
+        <span data-i18n="optHideSections">트렌드 / 더 찾아보기 / 추천 섹션 숨기기</span>
+        <input type="checkbox" id="hideDiscoverSections" />
+      </label>
+    </section>
+
+    <!-- YouTube 집중 설정 -->
+    <section class="card">
+      <h2 data-i18n="secYtTitle">YouTube 집중 설정</h2>
+      <label class="toggle-row">
+        <span data-i18n="optYtHideRecs">동영상 옆 알고리즘 추천 숨기기</span>
+        <input type="checkbox" id="ytHideRecommendations" />
+      </label>
+      <label class="toggle-row">
+        <span data-i18n="optYtHideShorts">YouTube 쇼츠(Shorts) 숨기기</span>
+        <input type="checkbox" id="ytHideShorts" />
+      </label>
+    </section>
+
+    <!-- Instagram 집중 설정 -->
+    <section class="card">
+      <h2 data-i18n="secIgTitle">Instagram 집중 설정</h2>
+      <label class="toggle-row">
+        <span data-i18n="optIgHideHomeSuggested">홈 화면 추천 게시물 숨기기</span>
+        <input type="checkbox" id="igHideHomeSuggested" />
+      </label>
+      <label class="toggle-row">
+        <span data-i18n="optIgHideExplore">탐색(Explore) 탭/메뉴 숨기기</span>
+        <input type="checkbox" id="igHideExplore" />
+      </label>
+      <label class="toggle-row">
+        <span data-i18n="optIgHideReels">Instagram 릴스(Reels) 숨기기</span>
+        <input type="checkbox" id="igHideReels" />
+      </label>
+    </section>
+
+    <!-- 2. Anki 교육 콘텐츠 -->
+    <section class="card">
+      <div class="section-head">
+        <h2 data-i18n="sec2Title">2. 피드 Anki 학습 카드</h2>
+        <span id="ankiStats" class="pill">0</span>
+      </div>
+      <p id="dailyStats" class="hint-text"></p>
+
+      <label class="toggle-row">
+        <span data-i18n="optAnkiEnabled">피드 중간에 Anki 카드 삽입</span>
+        <input type="checkbox" id="ankiEnabled" />
+      </label>
+
+      <label class="toggle-row">
+        <span data-i18n="optHideFurigana">한자 읽기(후리가나) 가리기</span>
+        <input type="checkbox" id="hideFurigana" />
+      </label>
+
+      <div class="input-row">
+        <label for="learningStyle" data-i18n="optLearningStyle">학습 방식</label>
+        <select id="learningStyle">
+          <option value="anki" data-i18n="styleAnki">Anki (정답 가리기·복습)</option>
+          <option value="exposure" data-i18n="styleExposure">단순 반복 노출 (전체 표시)</option>
+          <option value="mixed" data-i18n="styleMixed">혼합 (Anki + 반복 노출)</option>
+        </select>
+      </div>
+
+      <div class="input-row">
+        <label for="ankiDirection" data-i18n="optDirection">출제 방향</label>
+        <select id="ankiDirection">
+          <option value="front-to-back" data-i18n="dirF2B">정방향 (앞→뒤)</option>
+          <option value="back-to-front" data-i18n="dirB2F">역방향 (뒤→앞)</option>
+          <option value="both" data-i18n="dirBoth">양방향 랜덤</option>
+        </select>
+      </div>
+
+      <div class="input-row">
+        <label for="ankiInterval" data-i18n="optInterval">삽입 간격 (트윗 수)</label>
+        <input type="number" id="ankiInterval" min="1" max="50" value="5" />
+      </div>
+
+      <div class="input-row">
+        <label for="ankiActiveDeck" data-i18n="optActiveDeck">활성 덱</label>
+        <select id="ankiActiveDeck">
+          <option value="ALL">ALL</option>
+        </select>
+      </div>
+
+      <details class="quick-add">
+        <summary data-i18n="quickAddSummary">+ 빠른 카드 추가</summary>
+        <div class="quick-add-body">
+          <input type="text" id="quickDeck" data-i18n-placeholder="quickDeckPh" placeholder="Deck" value="Default" />
+          <textarea id="quickFront" rows="2" data-i18n-placeholder="quickFrontPh" placeholder="Front"></textarea>
+          <textarea id="quickBack" rows="2" data-i18n-placeholder="quickBackPh" placeholder="Back"></textarea>
+          <button id="quickAddBtn" class="btn btn-primary" data-i18n="saveCardBtn">카드 저장</button>
+          <p id="quickAddMsg" class="msg"></p>
+        </div>
+      </details>
+
+      <button id="manageCardsBtn" class="btn btn-secondary full-width" data-i18n="manageCardsBtn">
+        덱/카드 전체 관리 &amp; 가져오기
+      </button>
+    </section>
+  </main>
+
+  <script src="../shared/i18n.js"></script>
+  <script src="../shared/storage.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
