@@ -6,7 +6,7 @@
   const I18n = globalThis.XFocusI18n;
 
   if (!Storage || !I18n) {
-    console.warn("[X Focus & Anki] Shared modules not loaded on YouTube.");
+    console.warn("[FocusDeck] Shared modules not loaded on YouTube.");
     return;
   }
 

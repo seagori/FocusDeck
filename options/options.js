@@ -697,7 +697,7 @@
         const backup = await Storage.exportFullBackup();
         downloadBlob(
           JSON.stringify(backup, null, 2),
-          `x-focus-anki-backup-${new Date().toISOString().slice(0, 10)}.json`,
+          `focusdeck-backup-${new Date().toISOString().slice(0, 10)}.json`,
           "application/json"
         );
       });
@@ -724,14 +724,14 @@
 
     els.exportJsonBtn.addEventListener("click", () => {
       const json = JSON.stringify(currentState.cards, null, 2);
-      downloadBlob(json, `x-focus-anki-cards-${new Date().toISOString().slice(0, 10)}.json`, "application/json");
+      downloadBlob(json, `focusdeck-cards-${new Date().toISOString().slice(0, 10)}.json`, "application/json");
     });
 
     els.exportTsvBtn.addEventListener("click", () => {
       const tsv = currentState.cards
         .map((c) => [c.front, c.back, c.hint || "", (c.tags || []).join(" ")].map((v) => String(v).replace(/[\t\r\n]+/g, " ")).join("\t"))
         .join("\n");
-      downloadBlob(tsv, `x-focus-anki-cards-${new Date().toISOString().slice(0, 10)}.tsv`, "text/tab-separated-values;charset=utf-8");
+      downloadBlob(tsv, `focusdeck-cards-${new Date().toISOString().slice(0, 10)}.tsv`, "text/tab-separated-values;charset=utf-8");
     });
 
     els.resetProgressBtn.addEventListener("click", async () => {

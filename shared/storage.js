@@ -227,6 +227,17 @@
     return entries[entries.length - 1].deck;
   }
 
+  function applyWeightedDeckFilter(pool, settings) {
+    if (pool.length === 0) return pool;
+    if (settings?.ankiActiveDeck && settings.ankiActiveDeck !== "ALL") return pool;
+    const weights = settings?.ankiDeckWeights;
+    if (!weights || typeof weights !== "object" || Object.keys(weights).length === 0) return pool;
+
+    const chosenDeck = pickWeightedDeck(pool, weights);
+    if (!chosenDeck) return [];
+    return pool.filter((c) => (c.deck || "Default") === chosenDeck);
+  }
+
   function selectNextCard(cards, settings, excludeId, nowMs, platform) {
     const now = Number.isFinite(nowMs) ? nowMs : Date.now();
     const validCards = filterByPlatform(
@@ -239,41 +250,57 @@
     let pool = filterByDeck(validCards, settings?.ankiActiveDeck || "ALL");
     if (pool.length === 0) return null;
 
-    // Apply deck weights when ALL is selected
+    // Exclude decks explicitly set to weight 0
     if ((!settings?.ankiActiveDeck || settings.ankiActiveDeck === "ALL") && settings?.ankiDeckWeights) {
-      const hasCustomWeight = Object.keys(settings.ankiDeckWeights).length > 0;
-      if (hasCustomWeight) {
-        const chosenDeck = pickWeightedDeck(pool, settings.ankiDeckWeights);
-        if (chosenDeck) {
-          const deckPool = pool.filter((c) => (c.deck || "Default") === chosenDeck);
-          if (deckPool.length > 0) pool = deckPool;
-        }
+      const weights = settings.ankiDeckWeights;
+      if (Object.keys(weights).length > 0) {
+        pool = pool.filter((c) => {
+          const w = Number(weights[c.deck || "Default"]);
+          return !(Number.isFinite(w) && w === 0);
+        });
+        if (pool.length === 0) return null;
       }
     }
 
     const mode = settings?.ankiMode || "due-or-all";
-    let bestDue = null;
-    let fallbackDue = null;
-    for (let i = 0; i < pool.length; i++) {
-      const c = pool[i];
-      if ((c.due || 0) <= now) {
+    const duePool = pool.filter((c) => (c.due || 0) <= now);
+
+    if (mode === "due-only") {
+      const weightedDue = applyWeightedDeckFilter(duePool, settings);
+      if (weightedDue.length === 0) return null;
+      let bestDue = null;
+      let fallbackDue = null;
+      for (let i = 0; i < weightedDue.length; i++) {
+        const c = weightedDue[i];
         if (c.id !== excludeId) {
           if (!bestDue || (c.due || 0) < (bestDue.due || 0)) bestDue = c;
         } else if (!fallbackDue || (c.due || 0) < (fallbackDue.due || 0)) {
           fallbackDue = c;
         }
       }
-    }
-
-    if (mode === "due-only") {
       return bestDue || fallbackDue || null;
     }
 
-    if (mode === "due-or-all" && (bestDue || fallbackDue)) {
-      return bestDue || fallbackDue;
+    if (mode === "due-or-all" && duePool.length > 0) {
+      const weightedDue = applyWeightedDeckFilter(duePool, settings);
+      if (weightedDue.length > 0) {
+        let bestDue = null;
+        let fallbackDue = null;
+        for (let i = 0; i < weightedDue.length; i++) {
+          const c = weightedDue[i];
+          if (c.id !== excludeId) {
+            if (!bestDue || (c.due || 0) < (bestDue.due || 0)) bestDue = c;
+          } else if (!fallbackDue || (c.due || 0) < (fallbackDue.due || 0)) {
+            fallbackDue = c;
+          }
+        }
+        if (bestDue || fallbackDue) return bestDue || fallbackDue;
+      }
     }
 
-    const candidates = pool.length > 1 ? pool.filter((c) => c.id !== excludeId) : pool;
+    const weightedPool = applyWeightedDeckFilter(pool, settings);
+    if (weightedPool.length === 0) return null;
+    const candidates = weightedPool.length > 1 ? weightedPool.filter((c) => c.id !== excludeId) : weightedPool;
     return candidates[Math.floor(Math.random() * candidates.length)];
   }
 
@@ -286,18 +313,8 @@
     if (validCards.length === 0) return null;
 
     let pool = filterByDeck(validCards, settings?.ankiActiveDeck || "ALL");
+    pool = applyWeightedDeckFilter(pool, settings);
     if (pool.length === 0) return null;
-
-    if ((!settings?.ankiActiveDeck || settings.ankiActiveDeck === "ALL") && settings?.ankiDeckWeights) {
-      const hasCustomWeight = Object.keys(settings.ankiDeckWeights).length > 0;
-      if (hasCustomWeight) {
-        const chosenDeck = pickWeightedDeck(pool, settings.ankiDeckWeights);
-        if (chosenDeck) {
-          const deckPool = pool.filter((c) => (c.deck || "Default") === chosenDeck);
-          if (deckPool.length > 0) pool = deckPool;
-        }
-      }
-    }
 
     // Pick card with fewest views (tie-break by oldest lastSeenAt)
     let best = null;
@@ -550,7 +567,7 @@
   async function exportFullBackup() {
     const { settings, cards, srsProgress, stats } = await getState();
     return {
-      format: "x-focus-anki-backup",
+      format: "focusdeck-backup",
       version: 1,
       exportedAt: new Date().toISOString(),
       settings,

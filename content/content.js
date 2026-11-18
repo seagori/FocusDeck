@@ -6,7 +6,7 @@
   const I18n = globalThis.XFocusI18n;
 
   if (!Storage || !I18n) {
-    console.warn("[X Focus & Anki Lite] Shared modules not loaded.");
+    console.warn("[FocusDeck] Shared modules not loaded.");
     return;
   }
 

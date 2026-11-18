@@ -245,3 +245,28 @@ body {
   color: var(--accent);
   min-height: 16px;
 }
+
+.group-label {
+  margin: 10px 0 4px 0;
+  padding-top: 6px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.card h2 + .group-label {
+  margin-top: 4px;
+  padding-top: 0;
+  border-top: none;
+}
+
+.compact-card {
+  padding: 10px 14px;
+}
+
+.compact-card .input-row {
+  margin-bottom: 0;
+}

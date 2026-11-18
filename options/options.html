@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>X Focus &amp; Anki — Settings</title>
+  <title>FocusDeck — Settings</title>
   <link rel="stylesheet" href="options.css" />
 </head>
 <body>
   <header class="topbar">
     <div class="topbar-inner">
-      <h1 data-i18n="optionsHeader">⚡ X Focus &amp; Anki — 설정 및 로컬 카드 덱 관리</h1>
+      <h1 data-i18n="optionsHeader">⚡ FocusDeck — 설정 및 로컬 카드 덱 관리</h1>
       <span class="badge" data-i18n="localBadge">100% 로컬 저장소 (browser.storage.local)</span>
     </div>
   </header>
@@ -19,51 +19,67 @@
     <section class="panel">
       <h2 data-i18n="optGeneralTitle">일반 및 피드 · 학습 설정</h2>
       <p id="statsBanner" class="muted"></p>
-      <div class="grid-2">
-        <label class="check-item">
-          <input type="checkbox" id="removeDiscoverTab" />
-          <span data-i18n="optRemoveDiscoverLong">홈에서 추천(For You) 탭 제거 및 팔로우 중 자동 전환</span>
-        </label>
-        <label class="check-item">
-          <input type="checkbox" id="hideExploreNav" />
-          <span data-i18n="optHideExplore">탐색하기(Explore) 메뉴 숨기기</span>
-        </label>
-        <label class="check-item">
-          <input type="checkbox" id="hideDiscoverSections" />
-          <span data-i18n="optHideSectionsLong">사이드바 트렌드 / 팔로우 추천 / 더 찾아보기 숨기기</span>
-        </label>
-        <label class="check-item">
-          <input type="checkbox" id="ankiEnabled" />
-          <span data-i18n="optAnkiEnabledLong">피드 중간에 Anki 학습 카드 삽입 활성화</span>
-        </label>
-        <label class="check-item">
-          <input type="checkbox" id="hideFurigana" />
-          <span data-i18n="optHideFuriganaLong">한자 읽기(후리가나) 앞면에서 가리기</span>
-        </label>
-        <label class="check-item">
-          <input type="checkbox" id="usageReminderEnabled" />
-          <span data-i18n="optUsageReminderLong">X 사용 시간 리마인드 카드 피드 삽입</span>
-        </label>
-        <label class="check-item">
-          <input type="checkbox" id="ytHideRecommendations" />
-          <span data-i18n="optYtHideRecs">동영상 옆 알고리즘 추천 숨기기 (YouTube)</span>
-        </label>
-        <label class="check-item">
-          <input type="checkbox" id="ytHideShorts" />
-          <span data-i18n="optYtHideShorts">YouTube 쇼츠(Shorts) 숨기기</span>
-        </label>
-        <label class="check-item">
-          <input type="checkbox" id="igHideHomeSuggested" />
-          <span data-i18n="optIgHideHomeSuggested">홈 화면 추천 게시물 숨기기</span>
-        </label>
-        <label class="check-item">
-          <input type="checkbox" id="igHideExplore" />
-          <span data-i18n="optIgHideExplore">탐색(Explore) 탭/메뉴 숨기기</span>
-        </label>
-        <label class="check-item">
-          <input type="checkbox" id="igHideReels" />
-          <span data-i18n="optIgHideReels">Instagram 릴스(Reels) 숨기기</span>
-        </label>
+
+      <div class="setting-groups">
+        <div class="setting-group">
+          <h3 data-i18n="platformGroupX">X (Twitter)</h3>
+          <label class="check-item">
+            <input type="checkbox" id="removeDiscoverTab" />
+            <span data-i18n="optRemoveDiscoverLong">홈에서 추천(For You) 탭 제거 및 팔로우 중 자동 전환</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" id="hideExploreNav" />
+            <span data-i18n="optHideExplore">탐색하기(Explore) 메뉴 숨기기</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" id="hideDiscoverSections" />
+            <span data-i18n="optHideSectionsLong">사이드바 트렌드 / 팔로우 추천 / 더 찾아보기 숨기기</span>
+          </label>
+        </div>
+
+        <div class="setting-group">
+          <h3 data-i18n="platformGroupYt">YouTube</h3>
+          <label class="check-item">
+            <input type="checkbox" id="ytHideRecommendations" />
+            <span data-i18n="optYtHideRecs">동영상 옆 알고리즘 추천 숨기기 (YouTube)</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" id="ytHideShorts" />
+            <span data-i18n="optYtHideShorts">YouTube 쇼츠(Shorts) 숨기기</span>
+          </label>
+        </div>
+
+        <div class="setting-group">
+          <h3 data-i18n="platformGroupIg">Instagram</h3>
+          <label class="check-item">
+            <input type="checkbox" id="igHideHomeSuggested" />
+            <span data-i18n="optIgHideHomeSuggested">홈 화면 추천 게시물 숨기기</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" id="igHideExplore" />
+            <span data-i18n="optIgHideExplore">탐색(Explore) 탭/메뉴 숨기기</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" id="igHideReels" />
+            <span data-i18n="optIgHideReels">Instagram 릴스(Reels) 숨기기</span>
+          </label>
+        </div>
+
+        <div class="setting-group">
+          <h3 data-i18n="platformGroupStudy">학습 및 알림</h3>
+          <label class="check-item">
+            <input type="checkbox" id="ankiEnabled" />
+            <span data-i18n="optAnkiEnabledLong">피드 중간에 Anki 학습 카드 삽입 활성화</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" id="hideFurigana" />
+            <span data-i18n="optHideFuriganaLong">한자 읽기(후리가나) 앞면에서 가리기</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" id="usageReminderEnabled" />
+            <span data-i18n="optUsageReminderLong">X 사용 시간 리마인드 카드 피드 삽입</span>
+          </label>
+        </div>
       </div>
 
       <div class="form-row">
@@ -77,15 +93,9 @@
           </select>
         </div>
         <div class="field">
-          <label for="ankiInterval" data-i18n="optIntervalLong">카드 삽입 간격 (트윗 수)</label>
-          <input type="number" id="ankiInterval" min="1" max="50" />
-        </div>
-        <div class="field">
-          <label for="ankiMode" data-i18n="optModeLong">카드 선택 방식</label>
-          <select id="ankiMode">
-            <option value="due-or-all" data-i18n="modeDueOrAll">복습 예정 우선 (없으면 전체 랜덤)</option>
-            <option value="due-only" data-i18n="modeDueOnly">복습 예정 카드만 표시</option>
-            <option value="random" data-i18n="modeRandom">항상 무작위 표시</option>
+          <label for="ankiActiveDeck" data-i18n="optActiveDeck">활성 덱</label>
+          <select id="ankiActiveDeck">
+            <option value="ALL">ALL</option>
           </select>
         </div>
         <div class="field">
@@ -97,6 +107,14 @@
           </select>
         </div>
         <div class="field">
+          <label for="ankiMode" data-i18n="optModeLong">카드 선택 방식</label>
+          <select id="ankiMode">
+            <option value="due-or-all" data-i18n="modeDueOrAll">복습 예정 우선 (없으면 전체 랜덤)</option>
+            <option value="due-only" data-i18n="modeDueOnly">복습 예정 카드만 표시</option>
+            <option value="random" data-i18n="modeRandom">항상 무작위 표시</option>
+          </select>
+        </div>
+        <div class="field">
           <label for="ankiDirection" data-i18n="optDirectionLong">출제 방향 (양방향 복습)</label>
           <select id="ankiDirection">
             <option value="front-to-back" data-i18n="dirF2B">정방향 (앞면 → 뒷면)</option>
@@ -105,46 +123,52 @@
           </select>
         </div>
         <div class="field">
-          <label for="ankiActiveDeck" data-i18n="optActiveDeck">활성 덱</label>
-          <select id="ankiActiveDeck">
-            <option value="ALL">ALL</option>
-          </select>
-        </div>
-        <div class="field">
           <label for="dailyGoal" data-i18n="optDailyGoalLong">오늘의 학습 목표 (개)</label>
           <input type="number" id="dailyGoal" min="1" max="500" />
         </div>
-        <div class="field">
-          <label for="usageReminderIntervalMin" data-i18n="optUsageIntervalLong">사용 시간 알림 간격 (분)</label>
-          <input type="number" id="usageReminderIntervalMin" min="1" max="240" />
-        </div>
-        <div class="field">
-          <label for="usageCheckIntervalSec" data-i18n="optUsageCheckIntervalSec">사용 시간 체크 주기 (초)</label>
-          <input type="number" id="usageCheckIntervalSec" min="1" max="120" />
-        </div>
-        <div class="field">
-          <label for="overlayCardIntervalSec" data-i18n="optOverlayIntervalSec">오버레이 학습 카드 주기 (초)</label>
-          <input type="number" id="overlayCardIntervalSec" min="5" max="3600" />
-        </div>
-        <div class="field">
-          <label for="ytShortsCardInterval" data-i18n="optYtShortsInterval">쇼츠 학습 카드 주기 (쇼츠 N개마다)</label>
-          <input type="number" id="ytShortsCardInterval" min="1" max="50" />
-        </div>
-        <div class="field">
-          <label for="igReelsCardInterval" data-i18n="optIgReelsInterval">릴스 학습 카드 주기 (릴스 N개마다)</label>
-          <input type="number" id="igReelsCardInterval" min="1" max="50" />
-        </div>
       </div>
 
-      <div class="field">
-        <label for="mutedKeywords" data-i18n="optMutedKeywordsLong">로컬 키워드 뮤트 (쉼표 또는 줄바꿈으로 구분)</label>
-        <textarea id="mutedKeywords" rows="2" data-i18n-placeholder="mutedKeywordsPh" placeholder="spoiler, promo"></textarea>
-      </div>
+      <details class="advanced-settings">
+        <summary data-i18n="advancedSettingsSummary">세부 주기 · 키워드 뮤트 · 덱 가중치 설정</summary>
+        <div class="advanced-body">
+          <div class="form-row">
+            <div class="field">
+              <label for="ankiInterval" data-i18n="optIntervalLong">카드 삽입 간격 (트윗 수)</label>
+              <input type="number" id="ankiInterval" min="1" max="50" />
+            </div>
+            <div class="field">
+              <label for="usageReminderIntervalMin" data-i18n="optUsageIntervalLong">사용 시간 알림 간격 (분)</label>
+              <input type="number" id="usageReminderIntervalMin" min="1" max="240" />
+            </div>
+            <div class="field">
+              <label for="usageCheckIntervalSec" data-i18n="optUsageCheckIntervalSec">사용 시간 체크 주기 (초)</label>
+              <input type="number" id="usageCheckIntervalSec" min="1" max="120" />
+            </div>
+            <div class="field">
+              <label for="overlayCardIntervalSec" data-i18n="optOverlayIntervalSec">오버레이 학습 카드 주기 (초)</label>
+              <input type="number" id="overlayCardIntervalSec" min="5" max="3600" />
+            </div>
+            <div class="field">
+              <label for="ytShortsCardInterval" data-i18n="optYtShortsInterval">쇼츠 학습 카드 주기 (쇼츠 N개마다)</label>
+              <input type="number" id="ytShortsCardInterval" min="1" max="50" />
+            </div>
+            <div class="field">
+              <label for="igReelsCardInterval" data-i18n="optIgReelsInterval">릴스 학습 카드 주기 (릴스 N개마다)</label>
+              <input type="number" id="igReelsCardInterval" min="1" max="50" />
+            </div>
+          </div>
 
-      <div class="field" id="deckWeightsSection">
-        <label data-i18n="optDeckWeightsLong">덱별 가중치 / 빈도 설정 (전체 덱 선택 시 적용, 0이면 제외)</label>
-        <div id="deckWeightsList" class="form-row"></div>
-      </div>
+          <div class="field">
+            <label for="mutedKeywords" data-i18n="optMutedKeywordsLong">로컬 키워드 뮤트 (쉼표 또는 줄바꿈으로 구분)</label>
+            <textarea id="mutedKeywords" rows="2" data-i18n-placeholder="mutedKeywordsPh" placeholder="spoiler, promo"></textarea>
+          </div>
+
+          <div class="field" id="deckWeightsSection">
+            <label data-i18n="optDeckWeightsLong">덱별 가중치 / 빈도 설정 (전체 덱 선택 시 적용, 0이면 제외)</label>
+            <div id="deckWeightsList" class="form-row"></div>
+          </div>
+        </div>
+      </details>
       <p id="settingsMsg" class="status-msg"></p>
     </section>
 

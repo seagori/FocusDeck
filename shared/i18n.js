@@ -4,8 +4,7 @@
   const MESSAGES = {
     ko: {
       // Common
-      appTitle: "X Focus & Anki",
-      appTitleLite: "X Focus & Anki (Lite)",
+      appTitle: "FocusDeck",
       appSubtitle: "100% 로컬 · Firefox 데스크탑/모바일",
       localBadge: "100% 로컬 저장소 (browser.storage.local)",
       langLabel: "언어 / Language",
@@ -72,8 +71,7 @@
       platformIg: "Instagram 전용",
 
       // Options
-      optionsHeader: "⚡ X Focus & Anki — 설정 및 로컬 카드 덱 관리",
-      optionsHeaderLite: "⚡ X Focus & Anki (Lite) — 설정 및 로컬 카드 덱 관리",
+      optionsHeader: "⚡ FocusDeck — 설정 및 로컬 카드 덱 관리",
       optGeneralTitle: "일반 및 피드 · 학습 설정",
       optRemoveDiscoverLong: "홈에서 추천(For You) 탭 제거 및 팔로우 중 자동 전환",
       optHideSectionsLong: "사이드바 트렌드 / 팔로우 추천 / 더 찾아보기 숨기기",
@@ -179,11 +177,17 @@
       hudDownloadBtn: "다운로드 (.md)",
       hudCopyBtn: "마크다운 복사",
       hudCopied: "클립보드에 복사되었습니다! ({count}개)",
-      hudRedownloadBtn: "다시 다운로드 (.md)"
+      hudRedownloadBtn: "다시 다운로드 (.md)",
+      focusFiltersTitle: "1. 플랫폼 집중 필터",
+      studyOptionsSummary: "학습 세부 설정 (방식 · 방향 · 간격)",
+      advancedSettingsSummary: "세부 주기 · 키워드 뮤트 · 덱 가중치 설정",
+      platformGroupX: "X (Twitter)",
+      platformGroupYt: "YouTube",
+      platformGroupIg: "Instagram",
+      platformGroupStudy: "학습 및 알림"
     },
     en: {
-      appTitle: "X Focus & Anki",
-      appTitleLite: "X Focus & Anki (Lite)",
+      appTitle: "FocusDeck",
       appSubtitle: "100% Local · Firefox Desktop & Mobile",
       localBadge: "100% Local Storage (browser.storage.local)",
       langLabel: "Language / 언어",
@@ -248,8 +252,7 @@
       platformYt: "YouTube Only",
       platformIg: "Instagram Only",
 
-      optionsHeader: "⚡ X Focus & Anki — Settings & Local Deck Manager",
-      optionsHeaderLite: "⚡ X Focus & Anki (Lite) — Settings & Local Deck Manager",
+      optionsHeader: "⚡ FocusDeck — Settings & Local Deck Manager",
       optGeneralTitle: "General, Feed & Study Settings",
       optRemoveDiscoverLong: "Remove 'For You' tab on Home & auto-switch to Following",
       optHideSectionsLong: "Hide sidebar Trends / Who to follow / Discover more",
@@ -354,11 +357,17 @@
       hudDownloadBtn: "Download (.md)",
       hudCopyBtn: "Copy Markdown",
       hudCopied: "Copied to clipboard! ({count} items)",
-      hudRedownloadBtn: "Download again (.md)"
+      hudRedownloadBtn: "Download again (.md)",
+      focusFiltersTitle: "1. Platform Focus Filters",
+      studyOptionsSummary: "Study Options (Mode · Direction · Interval)",
+      advancedSettingsSummary: "Timing · Keyword Mute · Deck Weights",
+      platformGroupX: "X (Twitter)",
+      platformGroupYt: "YouTube",
+      platformGroupIg: "Instagram",
+      platformGroupStudy: "Study & Reminders"
     },
     ja: {
-      appTitle: "X Focus & Anki",
-      appTitleLite: "X Focus & Anki (Lite)",
+      appTitle: "FocusDeck",
       appSubtitle: "100% ローカル · Firefox デスクトップ/モバイル",
       localBadge: "100% ローカル保存 (browser.storage.local)",
       langLabel: "言語 / Language",
@@ -423,8 +432,7 @@
       platformYt: "YouTube 専用",
       platformIg: "Instagram 専用",
 
-      optionsHeader: "⚡ X Focus & Anki — 設定 & ローカルデッキ管理",
-      optionsHeaderLite: "⚡ X Focus & Anki (Lite) — 設定 & ローカルデッキ管理",
+      optionsHeader: "⚡ FocusDeck — 設定 & ローカルデッキ管理",
       optGeneralTitle: "一般・フィード・学習設定",
       optRemoveDiscoverLong: "ホームの「おすすめ」タブを削除し「フォロー中」へ自動切替",
       optHideSectionsLong: "サイドバーのトレンド・おすすめユーザー・もっと見つけるを非表示",
@@ -529,7 +537,14 @@
       hudDownloadBtn: "ダウンロード (.md)",
       hudCopyBtn: "Markdown をコピー",
       hudCopied: "クリップボードにコピーしました！ ({count}件)",
-      hudRedownloadBtn: "再ダウンロード (.md)"
+      hudRedownloadBtn: "再ダウンロード (.md)",
+      focusFiltersTitle: "1. プラットフォーム集中フィルター",
+      studyOptionsSummary: "学習詳細設定 (モード・方向・間隔)",
+      advancedSettingsSummary: "詳細間隔・キーワードミュート・デッキ重み付け",
+      platformGroupX: "X (Twitter)",
+      platformGroupYt: "YouTube",
+      platformGroupIg: "Instagram",
+      platformGroupStudy: "学習・リマインダー"
     }
   };
 

@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "X Focus & Anki",
-  "version": "1.0.4",
-  "description": "Remove Discover/Algorithmic feeds & Shorts/Reels on X, YouTube & Instagram, inject local Anki or Exposure flashcards, and track usage reminders. 100% local.",
+  "name": "FocusDeck",
+  "version": "1.0.5",
+  "description": "Remove Discover/Algorithmic feeds & Shorts/Reels on X, YouTube & Instagram, inject local flashcards, and track usage reminders. 100% local.",
   "icons": {
     "48": "icons/icon-48.png",
     "96": "icons/icon-96.png",
@@ -10,7 +10,7 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "x-focus-anki@local.extension",
+      "id": "x-focus-anki-lite@local.extension",
       "strict_min_version": "140.0",
       "data_collection_permissions": {
         "required": ["none"]
@@ -37,7 +37,7 @@
   ],
   "action": {
     "default_popup": "popup/popup.html",
-    "default_title": "X Focus & Anki",
+    "default_title": "FocusDeck",
     "default_icon": {
       "48": "icons/icon-48.png",
       "96": "icons/icon-96.png"

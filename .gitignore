@@ -1,3 +1,7 @@
+# Outputs
+*.zip
+*.xpi
+
 # Logs
 logs
 *.log

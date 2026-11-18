@@ -277,3 +277,49 @@ textarea {
   color: var(--muted);
   white-space: pre-wrap;
 }
+
+.setting-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.setting-group {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.setting-group h3 {
+  margin: 0 0 2px 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.advanced-settings {
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-top: 4px;
+}
+
+.advanced-settings summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.advanced-body {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

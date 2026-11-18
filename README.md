@@ -1,5 +1,7 @@
 # FocusDeck
 
+> **AI 생성 콘텐츠 안내**: 이 프로젝트의 코드, 문서 및 예시 데이터는 Gemini 4 Hydrogen으로 만들어졌습니다.
+
 **Firefox 데스크탑 & 안드로이드(모바일) 겸용** 집중 · 로컬 플래시카드 학습 확장프로그램(Manifest V3)입니다.  
 외부 서버 통신, 추적(Telemetry) 없이 **100% 로컬(`browser.storage.local`)**에서 동작합니다.
 

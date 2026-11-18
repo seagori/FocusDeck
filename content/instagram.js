@@ -6,7 +6,7 @@
   const I18n = globalThis.XFocusI18n;
 
   if (!Storage || !I18n) {
-    console.warn("[X Focus & Anki] Shared modules not loaded on Instagram.");
+    console.warn("[FocusDeck] Shared modules not loaded on Instagram.");
     return;
   }
 
@@ -162,12 +162,16 @@
       return;
     }
 
-    // Suggested posts inside feed articles (semantic text check, no obfuscated classes)
+    // Suggested posts inside feed articles (check header area only to avoid caption false positives)
     document.querySelectorAll("main article").forEach((article) => {
       if (article.getAttribute("data-xfocus-hidden")) return;
+      const artTop = article.getBoundingClientRect().top;
       const spans = article.querySelectorAll("span, div");
-      for (let i = 0; i < Math.min(spans.length, 30); i++) {
-        const txt = (spans[i].textContent || "").replace(/\s+/g, " ").trim();
+      for (let i = 0; i < Math.min(spans.length, 25); i++) {
+        const el = spans[i];
+        const relTop = el.getBoundingClientRect().top - artTop;
+        if (relTop > 140) break;
+        const txt = (el.textContent || "").replace(/\s+/g, " ").trim();
         if (txt.length > 0 && txt.length < 40 && SUGGESTED_RE.test(txt)) {
           hideElement(article, "ig-suggested");
           return;
